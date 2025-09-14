@@ -6,33 +6,21 @@ export const App = () => {
 
   const addOne = () => {
     // write code here
-    setCount(currentCount => {
-      let editedCount = currentCount;
-
-      editedCount += 1;
-
-      return editedCount;
-    });
+    setCount(c => c + 1);
   };
 
   const add100 = () => {
     // write code here
-    setCount(currentCount => {
-      let editedCount = currentCount;
-
-      editedCount += 100;
-
-      return editedCount;
-    });
+    setCount(c => c + 100);
   };
 
   // DON'T change the code below
   const increase = () => {
-    if (count % 5 === 0) {
-      add100();
-    }
+    setCount(prev => {
+      const next = prev + 1;
 
-    addOne();
+      return next % 5 === 0 ? next + 100 : next;
+    });
   };
 
   return (
